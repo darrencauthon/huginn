@@ -146,3 +146,5 @@ on_heroku do
   gem 'unicorn'
   gem 'rails_12factor', group: :production
 end
+
+gem 'huginn_agent', path: '~/darren/huginn_agent'
