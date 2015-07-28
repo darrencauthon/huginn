@@ -29,6 +29,11 @@ GIT
       omniauth-oauth2 (~> 1.1)
 
 PATH
+  remote: ~/darren/huginn-phantomjs
+  specs:
+    huginn-phantomjs (0.0.1)
+
+PATH
   remote: ~/darren/huginn_agent
   specs:
     huginn_agent (0.0.1)
@@ -534,6 +539,7 @@ DEPENDENCIES
   haversine
   hipchat (~> 1.2.0)
   httparty (~> 0.13)
+  huginn-phantomjs!
   huginn_agent!
   hypdf (~> 1.0.7)
   jquery-rails (~> 3.1.3)

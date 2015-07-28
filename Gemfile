@@ -149,3 +149,4 @@ end
 
 gem 'huginn_agent', path: '~/darren/huginn_agent'
 gem 'proof_of_concept_huginn_agents', path: '~/desktop/proof_of_concept_huginn_agents'
+gem 'huginn-phantomjs', path: '~/darren/huginn-phantomjs'
