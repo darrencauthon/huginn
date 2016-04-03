@@ -50,7 +50,6 @@ module Agents
     end
 
     def receive(incoming_events)
-      return if options['dedup']
       incoming_events.each do |event|
         interpolate_with(event) do
           check_this_url interpolated[:url]
@@ -62,6 +61,7 @@ module Agents
 
     def check_this_url(url)
       if result = ping(url)
+        return if options['dedup'] && result.status.to_s == memory['last_status'].to_s
         create_event payload: { 'url' => url, 'status' => result.status.to_s, 'response_received' => true }
         memory['last_status'] = result.status.to_s
       else

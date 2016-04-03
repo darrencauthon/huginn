@@ -155,6 +155,17 @@ describe 'HttpStatusAgent' do
             expect(agent.the_created_events.count).to eq(0)
           end
 
+          describe "but the status code is not 200" do
+
+            let(:status_code) { 201 }
+
+            it "should should create an event" do
+              agent.receive events
+              expect(agent.the_created_events.count).to eq(1)
+            end
+
+          end
+
         end
 
       end
