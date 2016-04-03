@@ -50,6 +50,7 @@ module Agents
     end
 
     def receive(incoming_events)
+      return if options['dedup']
       incoming_events.each do |event|
         interpolate_with(event) do
           check_this_url interpolated[:url]

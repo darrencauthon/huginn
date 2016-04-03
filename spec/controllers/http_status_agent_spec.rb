@@ -146,6 +146,17 @@ describe 'HttpStatusAgent' do
 
         end
 
+        describe "and no duplication settings have been set" do
+
+          before { agent.options['dedup'] = 'true' }
+
+          it "should should not create an event" do
+            agent.receive events
+            expect(agent.the_created_events.count).to eq(0)
+          end
+
+        end
+
       end
 
       describe "but the status code is not 200" do
