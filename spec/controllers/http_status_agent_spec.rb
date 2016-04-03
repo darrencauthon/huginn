@@ -133,6 +133,21 @@ describe 'HttpStatusAgent' do
         expect(agent.memory['last_status']).to eq('200')
       end
 
+      describe "but the last status code was 200" do
+
+        before { agent.memory['last_status'] = '200' }
+
+        describe "and no duplication settings have been set" do
+
+          it "should create one event" do
+            agent.receive events
+            expect(agent.the_created_events.count).to eq(1)
+          end
+
+        end
+
+      end
+
       describe "but the status code is not 200" do
         let(:status_code) { 500 }
 
