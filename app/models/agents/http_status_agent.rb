@@ -61,7 +61,7 @@ module Agents
 
     def check_this_url(url)
       if result = ping(url)
-        return if options['dedup'] && result.status.to_s == memory['last_status'].to_s
+        return if ignoring_this_duplicate(result)
         create_event payload: { 'url' => url, 'status' => result.status.to_s, 'response_received' => true }
         memory['last_status'] = result.status.to_s
       else
@@ -75,6 +75,10 @@ module Agents
       result.status > 0 ? result : nil
     rescue
       nil
+    end
+
+    def ignoring_this_duplicate(result)
+      options['dedup'] && result.status.to_s == memory['last_status'].to_s
     end
 
   end
